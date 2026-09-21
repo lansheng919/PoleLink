@@ -1,0 +1,304 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "PoleLink mock integration",
+    "version": "1.0.0",
+    "description": "Development-only SAP stand-in. Photo data is base64 JPEG. No authentication. Maximum POST payload 40 MiB."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Mock service health",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/associations": {
+      "post": {
+        "summary": "Submit a survey idempotently",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "Must match survey id"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Survey"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Receipt"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Identical retry",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Receipt"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflicting payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Over 40 MiB",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Database unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "List complete submitted surveys",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Survey"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/associations/{id}": {
+      "get": {
+        "summary": "Retrieve a submitted survey",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Survey"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Capture": {
+        "type": "object",
+        "required": [
+          "id",
+          "value",
+          "originalValue",
+          "confidence",
+          "verification",
+          "confidenceSource",
+          "capturedAt",
+          "photo",
+          "isDemo"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "value": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,63}$"
+          },
+          "originalValue": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "verification": {
+            "type": "string",
+            "enum": [
+              "high",
+              "manual"
+            ]
+          },
+          "confidenceSource": {
+            "type": "string",
+            "enum": [
+              "visionOCR",
+              "qrReadConsistency",
+              "demo"
+            ]
+          },
+          "capturedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "photo": {
+            "type": "string",
+            "format": "byte",
+            "description": "Base64 JPEG evidence"
+          },
+          "isDemo": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Survey": {
+        "type": "object",
+        "required": [
+          "id",
+          "createdAt",
+          "pole",
+          "lights",
+          "isDemo"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "pole": {
+            "$ref": "#/components/schemas/Capture"
+          },
+          "lights": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/Capture"
+            }
+          },
+          "isDemo": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Receipt": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "accepted": {
+            "type": "boolean"
+          },
+          "destination": {
+            "type": "string"
+          },
+          "duplicate": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

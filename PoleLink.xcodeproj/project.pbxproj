@@ -1,0 +1,188 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0000000000000000000000C8 /* PoleLink/Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000064 /* PoleLink/Camera.swift */; };
+		0000000000000000000000C9 /* PoleLink/Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000065 /* PoleLink/Models.swift */; };
+		0000000000000000000000CA /* PoleLink/PoleLinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000066 /* PoleLink/PoleLinkApp.swift */; };
+		0000000000000000000000CB /* PoleLink/ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000067 /* PoleLink/ScannerView.swift */; };
+		0000000000000000000000CC /* PoleLink/SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000068 /* PoleLink/SyncService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		000000000000000000000005 /* PoleLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = PoleLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000000064 /* PoleLink/Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoleLink/Camera.swift; sourceTree = "<group>"; };
+		000000000000000000000065 /* PoleLink/Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoleLink/Models.swift; sourceTree = "<group>"; };
+		000000000000000000000066 /* PoleLink/PoleLinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoleLink/PoleLinkApp.swift; sourceTree = "<group>"; };
+		000000000000000000000067 /* PoleLink/ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoleLink/ScannerView.swift; sourceTree = "<group>"; };
+		000000000000000000000068 /* PoleLink/SyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoleLink/SyncService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		000000000000000000000007 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		000000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000064 /* PoleLink/Camera.swift */,
+				000000000000000000000065 /* PoleLink/Models.swift */,
+				000000000000000000000066 /* PoleLink/PoleLinkApp.swift */,
+				000000000000000000000067 /* PoleLink/ScannerView.swift */,
+				000000000000000000000068 /* PoleLink/SyncService.swift */,
+				000000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		000000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000005 /* PoleLink.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		000000000000000000000004 /* PoleLink */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 000000000000000000000009 /* Build configuration list for PBXNativeTarget "PoleLink" */;
+			buildPhases = (
+				000000000000000000000006 /* Sources */,
+				000000000000000000000007 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PoleLink;
+			productName = PoleLink;
+			productReference = 000000000000000000000005 /* PoleLink.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		000000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 2600;
+			};
+			buildConfigurationList = 000000000000000000000008 /* Build configuration list for PBXProject "PoleLink" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 000000000000000000000002;
+			productRefGroup = 000000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				000000000000000000000004 /* PoleLink */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		000000000000000000000006 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0000000000000000000000C8 /* PoleLink/Camera.swift in Sources */,
+				0000000000000000000000C9 /* PoleLink/Models.swift in Sources */,
+				0000000000000000000000CA /* PoleLink/PoleLinkApp.swift in Sources */,
+				0000000000000000000000CB /* PoleLink/ScannerView.swift in Sources */,
+				0000000000000000000000CC /* PoleLink/SyncService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		00000000000000000000000A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		00000000000000000000000B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		00000000000000000000000C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BNN2PUJPA4;
+				INFOPLIST_FILE = PoleLink/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shenglan.polelink.demo.lans919;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		00000000000000000000000D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BNN2PUJPA4;
+				INFOPLIST_FILE = PoleLink/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shenglan.polelink.demo.lans919;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		000000000000000000000008 /* Build configuration list for PBXProject "PoleLink" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00000000000000000000000A /* Debug */,
+				00000000000000000000000B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		000000000000000000000009 /* Build configuration list for PBXNativeTarget "PoleLink" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00000000000000000000000C /* Debug */,
+				00000000000000000000000D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 000000000000000000000001 /* Project object */;
+}
